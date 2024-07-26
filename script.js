@@ -14,14 +14,20 @@ const bands = [
   "An Old Dog",
 ];
 
+function strip(bandName) {
+    return bandName.replace(/^(a |the |an )/i, '').trim();
+}
+
 const sortedBands = bands.sort(
     // function (a, b) {
-    // if (a > b) {
-    //     return 1;
-    // } else {
-    //     return -1;
+    //     if (strip(a) > strip(b)) {
+    //         return 1;
+    //     } else {
+    //         return -1;
+    //     }
     // }
-    (a, b) => a.localeCompare(b)
+    (a, b) => strip(a).localeCompare(strip(b))
+    // (a, b) => strip(a) > strip(b) ? 1 : -1
 );
 
 console.log(sortedBands);
